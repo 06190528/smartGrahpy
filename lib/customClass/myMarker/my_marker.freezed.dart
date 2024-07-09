@@ -23,7 +23,7 @@ mixin _$MyMarker {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  MyMarkerType get type => throw _privateConstructorUsedError;
+  MyMarkerTypes get type => throw _privateConstructorUsedError;
   @LatLngConverter()
   LatLng get position => throw _privateConstructorUsedError;
 
@@ -42,7 +42,7 @@ abstract class $MyMarkerCopyWith<$Res> {
       {String id,
       String name,
       String description,
-      MyMarkerType type,
+      MyMarkerTypes type,
       @LatLngConverter() LatLng position});
 }
 
@@ -81,7 +81,7 @@ class _$MyMarkerCopyWithImpl<$Res, $Val extends MyMarker>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as MyMarkerType,
+              as MyMarkerTypes,
       position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
@@ -102,7 +102,7 @@ abstract class _$$MyMarkerImplCopyWith<$Res>
       {String id,
       String name,
       String description,
-      MyMarkerType type,
+      MyMarkerTypes type,
       @LatLngConverter() LatLng position});
 }
 
@@ -139,7 +139,7 @@ class __$$MyMarkerImplCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as MyMarkerType,
+              as MyMarkerTypes,
       position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
@@ -168,7 +168,7 @@ class _$MyMarkerImpl implements _MyMarker {
   @override
   final String description;
   @override
-  final MyMarkerType type;
+  final MyMarkerTypes type;
   @override
   @LatLngConverter()
   final LatLng position;
@@ -216,7 +216,7 @@ abstract class _MyMarker implements MyMarker {
       {required final String id,
       required final String name,
       required final String description,
-      required final MyMarkerType type,
+      required final MyMarkerTypes type,
       @LatLngConverter() required final LatLng position}) = _$MyMarkerImpl;
 
   factory _MyMarker.fromJson(Map<String, dynamic> json) =
@@ -229,7 +229,7 @@ abstract class _MyMarker implements MyMarker {
   @override
   String get description;
   @override
-  MyMarkerType get type;
+  MyMarkerTypes get type;
   @override
   @LatLngConverter()
   LatLng get position;

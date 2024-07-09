@@ -12,7 +12,6 @@ class HomeScene extends ConsumerStatefulWidget {
 class _HomeSceneState extends ConsumerState<HomeScene> {
   final TextEditingController _searchController = TextEditingController();
   late GoogleMapController _mapController;
-  final Set<Polygon> _polygons = {};
   bool _isMenuVisible = false;
 
   @override
@@ -28,9 +27,10 @@ class _HomeSceneState extends ConsumerState<HomeScene> {
               zoom: 8,
             ),
             mapType: MapType.terrain,
-            polygons: _polygons,
+            polygons: homeSceneController.polygons, // プロバイダから取得
+            polylines: homeSceneController.polylines, // プロバイダから取得
             onMapCreated: (controller) {
-              _mapController = controller;
+              homeSceneController.setMapController(controller);
             },
             myLocationButtonEnabled: false,
             compassEnabled: false,
@@ -92,16 +92,14 @@ class _HomeSceneState extends ConsumerState<HomeScene> {
                     onPressed: () {
                       final query = _searchController.text;
                       homeSceneController
-                          .searchAndNavigate(
-                              query, _mapController, _polygons, setState)
+                          .searchAndNavigate(query, setState)
                           .then((_) {});
                     },
                   ),
                 ),
                 onSubmitted: (query) {
                   homeSceneController
-                      .searchAndNavigate(
-                          query, _mapController, _polygons, setState)
+                      .searchAndNavigate(query, setState)
                       .then((_) {
                     setState(() {});
                   });

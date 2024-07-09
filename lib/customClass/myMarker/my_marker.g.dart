@@ -26,9 +26,9 @@ Map<String, dynamic> _$$MyMarkerImplToJson(_$MyMarkerImpl instance) =>
     };
 
 const _$MyMarkerTypeEnumMap = {
-  MyMarkerType.note: 'note',
-  MyMarkerType.ironOre: 'ironOre',
-  MyMarkerType.coal: 'coal',
-  MyMarkerType.naturalGas: 'naturalGas',
-  MyMarkerType.oil: 'oil',
+  MyMarkerTypes.note: 'note',
+  MyMarkerTypes.ironOre: 'ironOre',
+  MyMarkerTypes.coal: 'coal',
+  MyMarkerTypes.naturalGas: 'naturalGas',
+  MyMarkerTypes.oil: 'oil',
 };

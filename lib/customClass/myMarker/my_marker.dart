@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:smart_graph_app/const.dart';
+import 'package:smart_graph_app/common/const.dart';
 
 part 'my_marker.freezed.dart';
 part 'my_marker.g.dart';
@@ -26,7 +26,7 @@ class MyMarker with _$MyMarker {
     required String id,
     required String name,
     required String description,
-    required MyMarkerType type,
+    required MyMarkerTypes type,
     @LatLngConverter() required LatLng position,
   }) = _MyMarker;
 
