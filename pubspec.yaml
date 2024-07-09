@@ -1,0 +1,31 @@
+name: smart_graph_app
+description: "A new Flutter project."
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.2 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  google_maps_flutter:
+    path: /Users/atsukikitano/pj/google-map-api-plugins/plugins/packages/google_maps_flutter/google_maps_flutter
+  http: ^1.2.1
+  flutter_riverpod: ^2.5.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  freezed: ^2.5.2
+  build_runner: ^2.4.9
+
+  flutter_lints: ^3.0.0
+  json_serializable: ^6.8.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/geojsonfile.geojson
