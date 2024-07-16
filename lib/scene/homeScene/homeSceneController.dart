@@ -16,11 +16,9 @@ class HomeSceneController {
   final ProviderRef ref;
   final Set<Polygon> _polygons = {};
   final Set<Polyline> _polylines = {};
+  final Set<Marker> _markers = {};
+  final Set<Circle> _circles = {};
   GoogleMapController? _mapController;
-  final CameraPosition _nowCameraPosition = const CameraPosition(
-    target: LatLng(27.98785, 86.9250), // エベレスト山の位置
-    zoom: 8,
-  );
 
   HomeSceneController(this.ref);
 
@@ -36,24 +34,17 @@ class HomeSceneController {
         'https://maps.googleapis.com/maps/api/geocode/json?address=$query&key=$apiKey';
     final response = await http.get(Uri.parse(url));
     final json = jsonDecode(response.body);
-
     if (json['status'] == 'OK') {
       final results = json['results'][0];
-      final address_components = results['address_components'][0];
-      bool have_natural_feature = false;
-      for (var type in address_components['types']) {
-        if (type == 'natural_feature') {
-          have_natural_feature = true;
-          break;
-        }
-      }
-      if (have_natural_feature) {
-        final location = results['geometry']['location'];
-        final latLng = LatLng(location['lat'], location['lng']);
-        final name = results['address_components'][0]['long_name'];
-        _loadGeoJsonAndSearch(setState, name);
-        animateCamera(latLng, await _mapController!.getZoomLevel());
-      }
+      final location = results['geometry']['location'];
+      final lat = location['lat'].toDouble();
+      final lng = location['lng'].toDouble();
+      final latLng = LatLng(lat, lng);
+      final name = results['address_components'][0]['long_name'];
+      _loadGeoJsonAndSearch(setState, name);
+      animateCamera(latLng, await _mapController!.getZoomLevel());
+      print('lat: $lat, lng: $lng');
+      // }
     } else {
       print('Error: ${json['status']}');
       print('Error message: ${json['error_message']}');
@@ -68,11 +59,11 @@ class HomeSceneController {
       strokeWidth: 1,
       fillColor: Color.fromARGB(130, 255, 243, 7),
     );
+    Future.delayed(Duration(milliseconds: 1));
     setState(() {
       polygons.add(polygon);
     });
-    final latLng = points[0];
-    animateCamera(latLng, await _mapController!.getZoomLevel());
+    Future.delayed(Duration(milliseconds: 1));
   }
 
   Future<void> _drawPolyline(Function setState, List<LatLng> points) async {
@@ -82,11 +73,11 @@ class HomeSceneController {
       color: Color.fromARGB(255, 41, 114, 248),
       width: 3,
     );
+    Future.delayed(Duration(milliseconds: 1));
     setState(() {
       polylines.add(polyline);
     });
-    final latLng = points[0];
-    animateCamera(latLng, await _mapController!.getZoomLevel());
+    Future.delayed(Duration(milliseconds: 1));
   }
 
   void showPopupMenu(BuildContext context, TapDownDetails details) {
@@ -125,6 +116,7 @@ class HomeSceneController {
     final jsonData = json.decode(data);
     if (jsonData['type'] == 'FeatureCollection') {
       for (var feature in jsonData['features']) {
+        Future.delayed(Duration(milliseconds: 1));
         if (Utils.compareText(
             name, feature['properties'][nameInJson].toString())) {
           final type = feature['geometry']['type'];
@@ -137,6 +129,7 @@ class HomeSceneController {
               setState,
               polygonPoints,
             );
+            // break;
           } else if (type == 'MultiPolygon') {
             for (var polygon in feature['geometry']['coordinates']) {
               List<LatLng> polygonPoints = [];
@@ -148,6 +141,7 @@ class HomeSceneController {
                 polygonPoints,
               );
             }
+            // break;
           } else if (type == 'LineString') {
             List<LatLng> linePoints = [];
             for (var coord in feature['geometry']['coordinates']) {
@@ -157,6 +151,7 @@ class HomeSceneController {
               setState,
               linePoints,
             );
+            // break;
           }
         }
       }

@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "168631554358",
+    "firebase_url": "https://smartgrahpy-default-rtdb.firebaseio.com",
+    "project_id": "smartgrahpy",
+    "storage_bucket": "smartgrahpy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168631554358:android:6470bcd878a6b3d1112397",
+        "android_client_info": {
+          "package_name": "com.example.smart_geography"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168631554358-nc8t18s8utmkc6e25tofj86ffdctievp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASxXWY0J4RfySmuKNPDzyFkxzKU_zg-F0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168631554358-nc8t18s8utmkc6e25tofj86ffdctievp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "168631554358-e8c1c5op2p7ajlsgv6b8fpk9lbm54p87.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.smartGeography"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168631554358:android:54a25056f66fdce6112397",
+        "android_client_info": {
+          "package_name": "com.geography.smart_graph_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168631554358-nc8t18s8utmkc6e25tofj86ffdctievp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASxXWY0J4RfySmuKNPDzyFkxzKU_zg-F0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168631554358-nc8t18s8utmkc6e25tofj86ffdctievp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "168631554358-e8c1c5op2p7ajlsgv6b8fpk9lbm54p87.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.smartGeography"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

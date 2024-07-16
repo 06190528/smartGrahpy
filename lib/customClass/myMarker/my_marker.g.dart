@@ -11,7 +11,7 @@ _$MyMarkerImpl _$$MyMarkerImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       name: json['name'] as String,
       description: json['description'] as String,
-      type: $enumDecode(_$MyMarkerTypeEnumMap, json['type']),
+      type: $enumDecode(_$MyMarkerTypesEnumMap, json['type']),
       position: const LatLngConverter()
           .fromJson(json['position'] as Map<String, double>),
     );
@@ -21,11 +21,11 @@ Map<String, dynamic> _$$MyMarkerImplToJson(_$MyMarkerImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
-      'type': _$MyMarkerTypeEnumMap[instance.type]!,
+      'type': _$MyMarkerTypesEnumMap[instance.type]!,
       'position': const LatLngConverter().toJson(instance.position),
     };
 
-const _$MyMarkerTypeEnumMap = {
+const _$MyMarkerTypesEnumMap = {
   MyMarkerTypes.note: 'note',
   MyMarkerTypes.ironOre: 'ironOre',
   MyMarkerTypes.coal: 'coal',

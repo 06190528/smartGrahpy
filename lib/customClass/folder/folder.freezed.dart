@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'userData.dart';
+part of 'folder.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,34 +14,33 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-UserData _$UserDataFromJson(Map<String, dynamic> json) {
-  return _UserData.fromJson(json);
+Folder _$FolderFromJson(Map<String, dynamic> json) {
+  return _Folder.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserData {
+mixin _$Folder {
   String get name => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
+  List<FolderContent> get contents => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserDataCopyWith<UserData> get copyWith =>
-      throw _privateConstructorUsedError;
+  $FolderCopyWith<Folder> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserDataCopyWith<$Res> {
-  factory $UserDataCopyWith(UserData value, $Res Function(UserData) then) =
-      _$UserDataCopyWithImpl<$Res, UserData>;
+abstract class $FolderCopyWith<$Res> {
+  factory $FolderCopyWith(Folder value, $Res Function(Folder) then) =
+      _$FolderCopyWithImpl<$Res, Folder>;
   @useResult
-  $Res call({String name, String id, String email});
+  $Res call({String name, String id, List<FolderContent> contents});
 }
 
 /// @nodoc
-class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
-    implements $UserDataCopyWith<$Res> {
-  _$UserDataCopyWithImpl(this._value, this._then);
+class _$FolderCopyWithImpl<$Res, $Val extends Folder>
+    implements $FolderCopyWith<$Res> {
+  _$FolderCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -53,7 +52,7 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
   $Res call({
     Object? name = null,
     Object? id = null,
-    Object? email = null,
+    Object? contents = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -64,31 +63,30 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
+      contents: null == contents
+          ? _value.contents
+          : contents // ignore: cast_nullable_to_non_nullable
+              as List<FolderContent>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$UserDataImplCopyWith<$Res>
-    implements $UserDataCopyWith<$Res> {
-  factory _$$UserDataImplCopyWith(
-          _$UserDataImpl value, $Res Function(_$UserDataImpl) then) =
-      __$$UserDataImplCopyWithImpl<$Res>;
+abstract class _$$FolderImplCopyWith<$Res> implements $FolderCopyWith<$Res> {
+  factory _$$FolderImplCopyWith(
+          _$FolderImpl value, $Res Function(_$FolderImpl) then) =
+      __$$FolderImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String id, String email});
+  $Res call({String name, String id, List<FolderContent> contents});
 }
 
 /// @nodoc
-class __$$UserDataImplCopyWithImpl<$Res>
-    extends _$UserDataCopyWithImpl<$Res, _$UserDataImpl>
-    implements _$$UserDataImplCopyWith<$Res> {
-  __$$UserDataImplCopyWithImpl(
-      _$UserDataImpl _value, $Res Function(_$UserDataImpl) _then)
+class __$$FolderImplCopyWithImpl<$Res>
+    extends _$FolderCopyWithImpl<$Res, _$FolderImpl>
+    implements _$$FolderImplCopyWith<$Res> {
+  __$$FolderImplCopyWithImpl(
+      _$FolderImpl _value, $Res Function(_$FolderImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,9 +94,9 @@ class __$$UserDataImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? id = null,
-    Object? email = null,
+    Object? contents = null,
   }) {
-    return _then(_$UserDataImpl(
+    return _then(_$FolderImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -107,80 +105,88 @@ class __$$UserDataImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
+      contents: null == contents
+          ? _value._contents
+          : contents // ignore: cast_nullable_to_non_nullable
+              as List<FolderContent>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$UserDataImpl implements _UserData {
-  const _$UserDataImpl(
-      {required this.name, required this.id, required this.email});
+class _$FolderImpl implements _Folder {
+  const _$FolderImpl(
+      {required this.name,
+      required this.id,
+      required final List<FolderContent> contents})
+      : _contents = contents;
 
-  factory _$UserDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserDataImplFromJson(json);
+  factory _$FolderImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FolderImplFromJson(json);
 
   @override
   final String name;
   @override
   final String id;
+  final List<FolderContent> _contents;
   @override
-  final String email;
+  List<FolderContent> get contents {
+    if (_contents is EqualUnmodifiableListView) return _contents;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_contents);
+  }
 
   @override
   String toString() {
-    return 'UserData(name: $name, id: $id, email: $email)';
+    return 'Folder(name: $name, id: $id, contents: $contents)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserDataImpl &&
+            other is _$FolderImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.email, email) || other.email == email));
+            const DeepCollectionEquality().equals(other._contents, _contents));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, id, email);
+  int get hashCode => Object.hash(
+      runtimeType, name, id, const DeepCollectionEquality().hash(_contents));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>
-      __$$UserDataImplCopyWithImpl<_$UserDataImpl>(this, _$identity);
+  _$$FolderImplCopyWith<_$FolderImpl> get copyWith =>
+      __$$FolderImplCopyWithImpl<_$FolderImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserDataImplToJson(
+    return _$$FolderImplToJson(
       this,
     );
   }
 }
 
-abstract class _UserData implements UserData {
-  const factory _UserData(
+abstract class _Folder implements Folder {
+  const factory _Folder(
       {required final String name,
       required final String id,
-      required final String email}) = _$UserDataImpl;
+      required final List<FolderContent> contents}) = _$FolderImpl;
 
-  factory _UserData.fromJson(Map<String, dynamic> json) =
-      _$UserDataImpl.fromJson;
+  factory _Folder.fromJson(Map<String, dynamic> json) = _$FolderImpl.fromJson;
 
   @override
   String get name;
   @override
   String get id;
   @override
-  String get email;
+  List<FolderContent> get contents;
   @override
   @JsonKey(ignore: true)
-  _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>
+  _$$FolderImplCopyWith<_$FolderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

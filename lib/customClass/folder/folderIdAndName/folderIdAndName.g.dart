@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'userData.dart';
+part of 'folderIdAndName.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserDataImpl _$$UserDataImplFromJson(Map<String, dynamic> json) =>
-    _$UserDataImpl(
-      name: json['name'] as String,
+_$FolderIdAndTitleImpl _$$FolderIdAndTitleImplFromJson(
+        Map<String, dynamic> json) =>
+    _$FolderIdAndTitleImpl(
+      title: json['title'] as String,
       id: json['id'] as String,
-      email: json['email'] as String,
     );
 
-Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
+Map<String, dynamic> _$$FolderIdAndTitleImplToJson(
+        _$FolderIdAndTitleImpl instance) =>
     <String, dynamic>{
-      'name': instance.name,
+      'title': instance.title,
       'id': instance.id,
-      'email': instance.email,
     };
