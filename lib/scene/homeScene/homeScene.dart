@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:smart_graph_app/common/commonWidgets/commonMenu.dart';
+import 'package:smart_graph_app/customClass/screenSize.dart';
 import 'package:smart_graph_app/scene/homeScene/homeSceneController.dart';
 import 'package:smart_graph_app/scene/homeScene/homeSceneWIdgets.dart';
 
@@ -12,10 +12,11 @@ class HomeScene extends ConsumerStatefulWidget {
 
 class _HomeSceneState extends ConsumerState<HomeScene> {
   late GoogleMapController _mapController;
+
   @override
   Widget build(BuildContext context) {
     final homeSceneController = ref.watch(homeSceneControllerProvider);
-    final width = MediaQuery.of(context).size.width;
+    final width = ScreenSize.width;
     return Scaffold(
       body: Stack(
         children: [
@@ -25,13 +26,18 @@ class _HomeSceneState extends ConsumerState<HomeScene> {
               zoom: 8,
             ),
             mapType: MapType.terrain,
-            polygons: homeSceneController.polygons, // プロバイダから取得
-            polylines: homeSceneController.polylines, // プロバイダから取得
+            polygons: homeSceneController.mapShape.polygons,
+            polylines: homeSceneController.mapShape.polylines,
+            markers: homeSceneController.mapShape.nowSetMarkers,
             onMapCreated: (controller) {
               homeSceneController.setMapController(controller);
             },
             myLocationButtonEnabled: false,
             compassEnabled: false,
+            rotateGesturesEnabled: false,
+            onTap: (latLng) {
+              homeSceneController.onTapAndSetNowSetMarkers(latLng, setState);
+            },
           ),
           Positioned(
             bottom: 10,
@@ -44,7 +50,11 @@ class _HomeSceneState extends ConsumerState<HomeScene> {
               ),
             ),
           ),
-          CommonMenuWidget(),
+          homeSceneController.commonMenuWidget.leftSlideMenu(
+              context,
+              setState,
+              HomeSceneWidgets.noteMenu(ScreenSize.width * 0.2),
+              ScreenSize.width * 0.2),
         ],
       ),
     );

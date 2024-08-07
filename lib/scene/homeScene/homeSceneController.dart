@@ -4,9 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
+import 'package:smart_graph_app/common/commonWidgets/commonMenu.dart';
 import 'package:smart_graph_app/common/const.dart';
 import 'package:smart_graph_app/common/logic.dart';
 import 'package:smart_graph_app/common/secret.dart';
+import 'package:smart_graph_app/customClass/mapShape/mapShape.dart';
 
 final homeSceneControllerProvider = Provider<HomeSceneController>((ref) {
   return HomeSceneController(ref);
@@ -14,16 +16,18 @@ final homeSceneControllerProvider = Provider<HomeSceneController>((ref) {
 
 class HomeSceneController {
   final ProviderRef ref;
-  final Set<Polygon> _polygons = {};
-  final Set<Polyline> _polylines = {};
-  final Set<Marker> _markers = {};
-  final Set<Circle> _circles = {};
+  final HomeSceneType type = HomeSceneType.search;
+  final MapShape mapShape = MapShape(
+    polygons: {},
+    polylines: {},
+    markers: {},
+    nowSetMarkers: {},
+    circles: {},
+  );
   GoogleMapController? _mapController;
+  CommonSideBarMenuWidget commonMenuWidget = CommonSideBarMenuWidget();
 
   HomeSceneController(this.ref);
-
-  Set<Polygon> get polygons => _polygons;
-  Set<Polyline> get polylines => _polylines;
 
   void setMapController(GoogleMapController controller) {
     _mapController = controller;
@@ -43,7 +47,6 @@ class HomeSceneController {
       final name = results['address_components'][0]['long_name'];
       _loadGeoJsonAndSearch(setState, name);
       animateCamera(latLng, await _mapController!.getZoomLevel());
-      print('lat: $lat, lng: $lng');
       // }
     } else {
       print('Error: ${json['status']}');
@@ -59,11 +62,9 @@ class HomeSceneController {
       strokeWidth: 1,
       fillColor: Color.fromARGB(130, 255, 243, 7),
     );
-    Future.delayed(Duration(milliseconds: 1));
     setState(() {
-      polygons.add(polygon);
+      mapShape.polygons.add(polygon);
     });
-    Future.delayed(Duration(milliseconds: 1));
   }
 
   Future<void> _drawPolyline(Function setState, List<LatLng> points) async {
@@ -75,32 +76,58 @@ class HomeSceneController {
     );
     Future.delayed(Duration(milliseconds: 1));
     setState(() {
-      polylines.add(polyline);
+      mapShape.polylines.add(polyline);
     });
     Future.delayed(Duration(milliseconds: 1));
   }
 
-  void showPopupMenu(BuildContext context, TapDownDetails details) {
-    showMenu(
-      context: context,
-      position: RelativeRect.fromLTRB(
-        details.globalPosition.dx,
-        details.globalPosition.dy,
-        details.globalPosition.dx,
-        details.globalPosition.dy,
-      ),
-      items: [
-        PopupMenuItem(
-          child: Text('Item 1'),
-        ),
-        PopupMenuItem(
-          child: Text('Item 2'),
-        ),
-        PopupMenuItem(
-          child: Text('Item 3'),
-        ),
-      ],
+  Future<void> _drawMarker(Function setState, LatLng position) async {
+    final marker = Marker(
+      markerId: MarkerId(DateTime.now().millisecondsSinceEpoch.toString()),
+      position: position,
+      icon: BitmapDescriptor.defaultMarker,
     );
+    setState(() {
+      mapShape.markers.add(marker);
+    });
+  }
+
+  Future<void> _drawNowSetMarker(Function setState, LatLng position) async {
+    final String markerIdValue =
+        DateTime.now().millisecondsSinceEpoch.toString();
+    final marker = Marker(
+      markerId: MarkerId(markerIdValue),
+      position: position,
+      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+      consumeTapEvents: true,
+      onTap: () {
+        setState(() {
+          mapShape.nowSetMarkers
+              .removeWhere((m) => m.markerId.value == markerIdValue);
+          if (mapShape.nowSetMarkers.length == 0) {
+            commonMenuWidget.changeMenuVisible(setState, false);
+          }
+        });
+      },
+    );
+    setState(() {
+      mapShape.nowSetMarkers.add(marker);
+    });
+  }
+
+  Future<void> _drawCircle(
+      Function setState, LatLng center, double radius) async {
+    final circle = Circle(
+      circleId: CircleId(DateTime.now().millisecondsSinceEpoch.toString()),
+      center: center,
+      radius: radius,
+      fillColor: Color.fromARGB(130, 255, 243, 7),
+      strokeWidth: 1,
+      strokeColor: Color.fromARGB(255, 253, 158, 4),
+    );
+    setState(() {
+      mapShape.circles.add(circle);
+    });
   }
 
   void _loadGeoJsonAndSearch(Function setState, String name) async {
@@ -178,5 +205,11 @@ class HomeSceneController {
         ),
       );
     }
+  }
+
+  Future<void> onTapAndSetNowSetMarkers(
+      LatLng latLng, Function setState) async {
+    await _drawNowSetMarker(setState, latLng);
+    commonMenuWidget.changeMenuVisible(setState, true);
   }
 }
