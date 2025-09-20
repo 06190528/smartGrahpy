@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # smart_graph_app
 
 A new Flutter project.
@@ -16,3 +17,6 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 flutter pub run build_runner build --delete-conflicting-outputs
+=======
+# smartGrahpy
+>>>>>>> fecc0f36acee35e050c2cad0dd8f6945454f30ed
