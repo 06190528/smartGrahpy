@@ -8,8 +8,8 @@ part of 'folderContent.dart';
 
 _$FolderContentImpl _$$FolderContentImplFromJson(Map<String, dynamic> json) =>
     _$FolderContentImpl(
-      notes: (json['notes'] as List<dynamic>)
-          .map((e) => Note.fromJson(e as Map<String, dynamic>))
+      noteList: (json['noteList'] as List<dynamic>)
+          .map((e) => NoteList.fromJson(e as Map<String, dynamic>))
           .toList(),
       folders: (json['folders'] as List<dynamic>)
           .map((e) => FolderIdAndTitle.fromJson(e as Map<String, dynamic>))
@@ -18,6 +18,6 @@ _$FolderContentImpl _$$FolderContentImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$FolderContentImplToJson(_$FolderContentImpl instance) =>
     <String, dynamic>{
-      'notes': instance.notes,
+      'noteList': instance.noteList,
       'folders': instance.folders,
     };

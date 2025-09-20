@@ -68,6 +68,6 @@ class IconHelper {
   }
 
   static Future<Image> setImage(IconTypes type, name) async {
-    return Image.asset('assets/images/icons/' + name + '.png');
+    return Image.asset('${'assets/images/icons/' + name}.png');
   }
 }

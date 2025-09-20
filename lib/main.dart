@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smart_graph_app/common/const.dart';
 import 'package:smart_graph_app/common/logic.dart';
 import 'package:smart_graph_app/customClass/screenSize.dart';
+import 'package:smart_graph_app/data/local.dart';
 import 'package:smart_graph_app/scene/homeScene/homeScene.dart';
 
 void main() async {
@@ -11,6 +12,7 @@ void main() async {
   await Firebase.initializeApp(
       // options: DefaultFirebaseOptions.currentPlatform,
       );
+  await DatabaseService().database;
   final container = ProviderContainer();
   await Initialize.initialize(container);
   runApp(

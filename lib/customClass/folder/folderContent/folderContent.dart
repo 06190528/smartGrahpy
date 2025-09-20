@@ -7,8 +7,9 @@ part 'folderContent.g.dart';
 
 @freezed
 class FolderContent with _$FolderContent {
+  //
   const factory FolderContent({
-    required List<Note> notes,
+    required List<NoteList> noteList,
     required List<FolderIdAndTitle> folders,
   }) = _FolderContent;
 

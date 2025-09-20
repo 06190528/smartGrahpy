@@ -62,4 +62,8 @@ class Utils {
     }
     return false;
   }
+
+  static double bestFitFontSize(String text, double width, double height) {
+    return min(width / (text.length * 2), height / 2);
+  }
 }

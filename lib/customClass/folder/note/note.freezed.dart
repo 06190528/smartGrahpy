@@ -21,9 +21,7 @@ Note _$NoteFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Note {
   String get title => throw _privateConstructorUsedError;
-  String get parentFolderId => throw _privateConstructorUsedError;
-  String get content => throw _privateConstructorUsedError;
-  String get folderId => throw _privateConstructorUsedError;
+  String get note => throw _privateConstructorUsedError;
   DrawStile get drawStile => throw _privateConstructorUsedError;
   @LatLngConverter()
   List<LatLng> get latLngs => throw _privateConstructorUsedError;
@@ -41,9 +39,7 @@ abstract class $NoteCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
-      String parentFolderId,
-      String content,
-      String folderId,
+      String note,
       DrawStile drawStile,
       @LatLngConverter() List<LatLng> latLngs,
       ImageOrDefault imageOrDefault});
@@ -63,9 +59,7 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
   @override
   $Res call({
     Object? title = null,
-    Object? parentFolderId = null,
-    Object? content = null,
-    Object? folderId = null,
+    Object? note = null,
     Object? drawStile = null,
     Object? latLngs = null,
     Object? imageOrDefault = null,
@@ -75,17 +69,9 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      parentFolderId: null == parentFolderId
-          ? _value.parentFolderId
-          : parentFolderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String,
-      folderId: null == folderId
-          ? _value.folderId
-          : folderId // ignore: cast_nullable_to_non_nullable
+      note: null == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
               as String,
       drawStile: null == drawStile
           ? _value.drawStile
@@ -112,9 +98,7 @@ abstract class _$$NoteImplCopyWith<$Res> implements $NoteCopyWith<$Res> {
   @useResult
   $Res call(
       {String title,
-      String parentFolderId,
-      String content,
-      String folderId,
+      String note,
       DrawStile drawStile,
       @LatLngConverter() List<LatLng> latLngs,
       ImageOrDefault imageOrDefault});
@@ -131,9 +115,7 @@ class __$$NoteImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
-    Object? parentFolderId = null,
-    Object? content = null,
-    Object? folderId = null,
+    Object? note = null,
     Object? drawStile = null,
     Object? latLngs = null,
     Object? imageOrDefault = null,
@@ -143,17 +125,9 @@ class __$$NoteImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      parentFolderId: null == parentFolderId
-          ? _value.parentFolderId
-          : parentFolderId // ignore: cast_nullable_to_non_nullable
-              as String,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
-              as String,
-      folderId: null == folderId
-          ? _value.folderId
-          : folderId // ignore: cast_nullable_to_non_nullable
+      note: null == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
               as String,
       drawStile: null == drawStile
           ? _value.drawStile
@@ -176,9 +150,7 @@ class __$$NoteImplCopyWithImpl<$Res>
 class _$NoteImpl implements _Note {
   const _$NoteImpl(
       {required this.title,
-      required this.parentFolderId,
-      required this.content,
-      required this.folderId,
+      required this.note,
       required this.drawStile,
       @LatLngConverter() required final List<LatLng> latLngs,
       required this.imageOrDefault})
@@ -190,11 +162,7 @@ class _$NoteImpl implements _Note {
   @override
   final String title;
   @override
-  final String parentFolderId;
-  @override
-  final String content;
-  @override
-  final String folderId;
+  final String note;
   @override
   final DrawStile drawStile;
   final List<LatLng> _latLngs;
@@ -211,7 +179,7 @@ class _$NoteImpl implements _Note {
 
   @override
   String toString() {
-    return 'Note(title: $title, parentFolderId: $parentFolderId, content: $content, folderId: $folderId, drawStile: $drawStile, latLngs: $latLngs, imageOrDefault: $imageOrDefault)';
+    return 'Note(title: $title, note: $note, drawStile: $drawStile, latLngs: $latLngs, imageOrDefault: $imageOrDefault)';
   }
 
   @override
@@ -220,11 +188,7 @@ class _$NoteImpl implements _Note {
         (other.runtimeType == runtimeType &&
             other is _$NoteImpl &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.parentFolderId, parentFolderId) ||
-                other.parentFolderId == parentFolderId) &&
-            (identical(other.content, content) || other.content == content) &&
-            (identical(other.folderId, folderId) ||
-                other.folderId == folderId) &&
+            (identical(other.note, note) || other.note == note) &&
             (identical(other.drawStile, drawStile) ||
                 other.drawStile == drawStile) &&
             const DeepCollectionEquality().equals(other._latLngs, _latLngs) &&
@@ -234,15 +198,8 @@ class _$NoteImpl implements _Note {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      title,
-      parentFolderId,
-      content,
-      folderId,
-      drawStile,
-      const DeepCollectionEquality().hash(_latLngs),
-      imageOrDefault);
+  int get hashCode => Object.hash(runtimeType, title, note, drawStile,
+      const DeepCollectionEquality().hash(_latLngs), imageOrDefault);
 
   @JsonKey(ignore: true)
   @override
@@ -261,9 +218,7 @@ class _$NoteImpl implements _Note {
 abstract class _Note implements Note {
   const factory _Note(
       {required final String title,
-      required final String parentFolderId,
-      required final String content,
-      required final String folderId,
+      required final String note,
       required final DrawStile drawStile,
       @LatLngConverter() required final List<LatLng> latLngs,
       required final ImageOrDefault imageOrDefault}) = _$NoteImpl;
@@ -273,11 +228,7 @@ abstract class _Note implements Note {
   @override
   String get title;
   @override
-  String get parentFolderId;
-  @override
-  String get content;
-  @override
-  String get folderId;
+  String get note;
   @override
   DrawStile get drawStile;
   @override
@@ -288,5 +239,188 @@ abstract class _Note implements Note {
   @override
   @JsonKey(ignore: true)
   _$$NoteImplCopyWith<_$NoteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+NoteList _$NoteListFromJson(Map<String, dynamic> json) {
+  return _NoteList.fromJson(json);
+}
+
+/// @nodoc
+mixin _$NoteList {
+  List<Note> get notes => throw _privateConstructorUsedError;
+  String get folderId => throw _privateConstructorUsedError;
+  int get index => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $NoteListCopyWith<NoteList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $NoteListCopyWith<$Res> {
+  factory $NoteListCopyWith(NoteList value, $Res Function(NoteList) then) =
+      _$NoteListCopyWithImpl<$Res, NoteList>;
+  @useResult
+  $Res call({List<Note> notes, String folderId, int index});
+}
+
+/// @nodoc
+class _$NoteListCopyWithImpl<$Res, $Val extends NoteList>
+    implements $NoteListCopyWith<$Res> {
+  _$NoteListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? notes = null,
+    Object? folderId = null,
+    Object? index = null,
+  }) {
+    return _then(_value.copyWith(
+      notes: null == notes
+          ? _value.notes
+          : notes // ignore: cast_nullable_to_non_nullable
+              as List<Note>,
+      folderId: null == folderId
+          ? _value.folderId
+          : folderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$NoteListImplCopyWith<$Res>
+    implements $NoteListCopyWith<$Res> {
+  factory _$$NoteListImplCopyWith(
+          _$NoteListImpl value, $Res Function(_$NoteListImpl) then) =
+      __$$NoteListImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<Note> notes, String folderId, int index});
+}
+
+/// @nodoc
+class __$$NoteListImplCopyWithImpl<$Res>
+    extends _$NoteListCopyWithImpl<$Res, _$NoteListImpl>
+    implements _$$NoteListImplCopyWith<$Res> {
+  __$$NoteListImplCopyWithImpl(
+      _$NoteListImpl _value, $Res Function(_$NoteListImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? notes = null,
+    Object? folderId = null,
+    Object? index = null,
+  }) {
+    return _then(_$NoteListImpl(
+      notes: null == notes
+          ? _value._notes
+          : notes // ignore: cast_nullable_to_non_nullable
+              as List<Note>,
+      folderId: null == folderId
+          ? _value.folderId
+          : folderId // ignore: cast_nullable_to_non_nullable
+              as String,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable()
+class _$NoteListImpl implements _NoteList {
+  const _$NoteListImpl(
+      {required final List<Note> notes,
+      required this.folderId,
+      required this.index})
+      : _notes = notes;
+
+  factory _$NoteListImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NoteListImplFromJson(json);
+
+  final List<Note> _notes;
+  @override
+  List<Note> get notes {
+    if (_notes is EqualUnmodifiableListView) return _notes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_notes);
+  }
+
+  @override
+  final String folderId;
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'NoteList(notes: $notes, folderId: $folderId, index: $index)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NoteListImpl &&
+            const DeepCollectionEquality().equals(other._notes, _notes) &&
+            (identical(other.folderId, folderId) ||
+                other.folderId == folderId) &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_notes), folderId, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NoteListImplCopyWith<_$NoteListImpl> get copyWith =>
+      __$$NoteListImplCopyWithImpl<_$NoteListImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$NoteListImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _NoteList implements NoteList {
+  const factory _NoteList(
+      {required final List<Note> notes,
+      required final String folderId,
+      required final int index}) = _$NoteListImpl;
+
+  factory _NoteList.fromJson(Map<String, dynamic> json) =
+      _$NoteListImpl.fromJson;
+
+  @override
+  List<Note> get notes;
+  @override
+  String get folderId;
+  @override
+  int get index;
+  @override
+  @JsonKey(ignore: true)
+  _$$NoteListImplCopyWith<_$NoteListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

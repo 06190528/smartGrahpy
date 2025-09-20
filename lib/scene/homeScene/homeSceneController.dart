@@ -9,6 +9,7 @@ import 'package:smart_graph_app/common/const.dart';
 import 'package:smart_graph_app/common/logic.dart';
 import 'package:smart_graph_app/common/secret.dart';
 import 'package:smart_graph_app/customClass/mapShape/mapShape.dart';
+import 'package:smart_graph_app/scene/homeScene/homeSceneWIdgets.dart';
 
 final homeSceneControllerProvider = Provider<HomeSceneController>((ref) {
   return HomeSceneController(ref);
@@ -16,7 +17,7 @@ final homeSceneControllerProvider = Provider<HomeSceneController>((ref) {
 
 class HomeSceneController {
   final ProviderRef ref;
-  final HomeSceneType type = HomeSceneType.search;
+  final HomeSceneType type = HomeSceneType.show;
   final MapShape mapShape = MapShape(
     polygons: {},
     polylines: {},
@@ -26,8 +27,13 @@ class HomeSceneController {
   );
   GoogleMapController? _mapController;
   CommonSideBarMenuWidget commonMenuWidget = CommonSideBarMenuWidget();
+  HomeSceneWidgets? homeSceneWidgets;
 
   HomeSceneController(this.ref);
+
+  void setHomeSceneWidgets(double width, Function setState) {
+    homeSceneWidgets = HomeSceneWidgets(width, this, setState);
+  }
 
   void setMapController(GoogleMapController controller) {
     _mapController = controller;

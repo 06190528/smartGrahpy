@@ -10,7 +10,8 @@ class Folder with _$Folder {
   const factory Folder({
     required String name,
     required String id,
-    required List<FolderContent> contents,
+    required int index,
+    required FolderContent content,
   }) = _Folder;
 
   factory Folder.fromJson(Map<String, dynamic> json) => _$FolderFromJson(json);
@@ -21,8 +22,8 @@ extension FolderExtensions on Folder {
     return {
       'id': id,
       'name': name,
-      'contents':
-          jsonEncode(contents.map((content) => content.toJson()).toList()),
+      'index': index,
+      'content': jsonEncode(content.toJson()), // FolderContentをJSONに変換
     };
   }
 
@@ -30,9 +31,9 @@ extension FolderExtensions on Folder {
     return Folder(
       id: map['id'],
       name: map['name'],
-      contents: (jsonDecode(map['contents']) as List)
-          .map((item) => FolderContent.fromJson(item))
-          .toList(),
+      index: map['index'],
+      content: FolderContent.fromJson(
+          jsonDecode(map['content'])), // JSONからFolderContentを再生成
     );
   }
 }

@@ -22,7 +22,8 @@ Folder _$FolderFromJson(Map<String, dynamic> json) {
 mixin _$Folder {
   String get name => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
-  List<FolderContent> get contents => throw _privateConstructorUsedError;
+  int get index => throw _privateConstructorUsedError;
+  FolderContent get content => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,9 @@ abstract class $FolderCopyWith<$Res> {
   factory $FolderCopyWith(Folder value, $Res Function(Folder) then) =
       _$FolderCopyWithImpl<$Res, Folder>;
   @useResult
-  $Res call({String name, String id, List<FolderContent> contents});
+  $Res call({String name, String id, int index, FolderContent content});
+
+  $FolderContentCopyWith<$Res> get content;
 }
 
 /// @nodoc
@@ -52,7 +55,8 @@ class _$FolderCopyWithImpl<$Res, $Val extends Folder>
   $Res call({
     Object? name = null,
     Object? id = null,
-    Object? contents = null,
+    Object? index = null,
+    Object? content = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -63,11 +67,23 @@ class _$FolderCopyWithImpl<$Res, $Val extends Folder>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      contents: null == contents
-          ? _value.contents
-          : contents // ignore: cast_nullable_to_non_nullable
-              as List<FolderContent>,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as FolderContent,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FolderContentCopyWith<$Res> get content {
+    return $FolderContentCopyWith<$Res>(_value.content, (value) {
+      return _then(_value.copyWith(content: value) as $Val);
+    });
   }
 }
 
@@ -78,7 +94,10 @@ abstract class _$$FolderImplCopyWith<$Res> implements $FolderCopyWith<$Res> {
       __$$FolderImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String id, List<FolderContent> contents});
+  $Res call({String name, String id, int index, FolderContent content});
+
+  @override
+  $FolderContentCopyWith<$Res> get content;
 }
 
 /// @nodoc
@@ -94,7 +113,8 @@ class __$$FolderImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? id = null,
-    Object? contents = null,
+    Object? index = null,
+    Object? content = null,
   }) {
     return _then(_$FolderImpl(
       name: null == name
@@ -105,10 +125,14 @@ class __$$FolderImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      contents: null == contents
-          ? _value._contents
-          : contents // ignore: cast_nullable_to_non_nullable
-              as List<FolderContent>,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      content: null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as FolderContent,
     ));
   }
 }
@@ -119,8 +143,8 @@ class _$FolderImpl implements _Folder {
   const _$FolderImpl(
       {required this.name,
       required this.id,
-      required final List<FolderContent> contents})
-      : _contents = contents;
+      required this.index,
+      required this.content});
 
   factory _$FolderImpl.fromJson(Map<String, dynamic> json) =>
       _$$FolderImplFromJson(json);
@@ -129,17 +153,14 @@ class _$FolderImpl implements _Folder {
   final String name;
   @override
   final String id;
-  final List<FolderContent> _contents;
   @override
-  List<FolderContent> get contents {
-    if (_contents is EqualUnmodifiableListView) return _contents;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_contents);
-  }
+  final int index;
+  @override
+  final FolderContent content;
 
   @override
   String toString() {
-    return 'Folder(name: $name, id: $id, contents: $contents)';
+    return 'Folder(name: $name, id: $id, index: $index, content: $content)';
   }
 
   @override
@@ -149,13 +170,13 @@ class _$FolderImpl implements _Folder {
             other is _$FolderImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.id, id) || other.id == id) &&
-            const DeepCollectionEquality().equals(other._contents, _contents));
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.content, content) || other.content == content));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, id, const DeepCollectionEquality().hash(_contents));
+  int get hashCode => Object.hash(runtimeType, name, id, index, content);
 
   @JsonKey(ignore: true)
   @override
@@ -175,7 +196,8 @@ abstract class _Folder implements Folder {
   const factory _Folder(
       {required final String name,
       required final String id,
-      required final List<FolderContent> contents}) = _$FolderImpl;
+      required final int index,
+      required final FolderContent content}) = _$FolderImpl;
 
   factory _Folder.fromJson(Map<String, dynamic> json) = _$FolderImpl.fromJson;
 
@@ -184,7 +206,9 @@ abstract class _Folder implements Folder {
   @override
   String get id;
   @override
-  List<FolderContent> get contents;
+  int get index;
+  @override
+  FolderContent get content;
   @override
   @JsonKey(ignore: true)
   _$$FolderImplCopyWith<_$FolderImpl> get copyWith =>

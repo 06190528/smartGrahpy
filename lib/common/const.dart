@@ -35,6 +35,6 @@ enum ImageOrDefault {
 }
 
 enum HomeSceneType {
-  search,
+  show,
   note,
 }

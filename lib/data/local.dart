@@ -23,22 +23,35 @@ class DatabaseService {
     String path = join(await getDatabasesPath(), 'folders.db');
     return await openDatabase(
       path,
-      version: 1,
-      onCreate: (db, version) {
-        return db.execute(
-          "CREATE TABLE folders(id TEXT PRIMARY KEY, name TEXT, contents TEXT)",
+      version: 2, // バージョンを上げる
+      onCreate: (db, version) async {
+        await db.execute(
+          "CREATE TABLE folders(id TEXT PRIMARY KEY, name TEXT, index INTEGER, contents TEXT)",
         );
+      },
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < 2) {
+          // バージョン1から2へのアップグレード時に `index` 列を追加
+          await db.execute("ALTER TABLE folders ADD COLUMN index INTEGER");
+        }
       },
     );
   }
 
   Future<void> insertFolder(Folder folder) async {
-    final db = await database;
-    await db.insert(
-      'folders',
-      folder.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    try {
+      print('insertFolder');
+      final db = await database;
+      print('insertFolder2');
+      await db.insert(
+        'folders',
+        folder.toMap(),
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
+      print('insertFolder3');
+    } catch (e) {
+      print('Error inserting folder: $e');
+    }
   }
 
   Future<Folder?> getFolderById(String id) async {

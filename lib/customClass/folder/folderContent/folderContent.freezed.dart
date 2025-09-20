@@ -20,7 +20,7 @@ FolderContent _$FolderContentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FolderContent {
-  List<Note> get notes => throw _privateConstructorUsedError;
+  List<NoteList> get noteList => throw _privateConstructorUsedError;
   List<FolderIdAndTitle> get folders => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $FolderContentCopyWith<$Res> {
           FolderContent value, $Res Function(FolderContent) then) =
       _$FolderContentCopyWithImpl<$Res, FolderContent>;
   @useResult
-  $Res call({List<Note> notes, List<FolderIdAndTitle> folders});
+  $Res call({List<NoteList> noteList, List<FolderIdAndTitle> folders});
 }
 
 /// @nodoc
@@ -51,14 +51,14 @@ class _$FolderContentCopyWithImpl<$Res, $Val extends FolderContent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? notes = null,
+    Object? noteList = null,
     Object? folders = null,
   }) {
     return _then(_value.copyWith(
-      notes: null == notes
-          ? _value.notes
-          : notes // ignore: cast_nullable_to_non_nullable
-              as List<Note>,
+      noteList: null == noteList
+          ? _value.noteList
+          : noteList // ignore: cast_nullable_to_non_nullable
+              as List<NoteList>,
       folders: null == folders
           ? _value.folders
           : folders // ignore: cast_nullable_to_non_nullable
@@ -75,7 +75,7 @@ abstract class _$$FolderContentImplCopyWith<$Res>
       __$$FolderContentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Note> notes, List<FolderIdAndTitle> folders});
+  $Res call({List<NoteList> noteList, List<FolderIdAndTitle> folders});
 }
 
 /// @nodoc
@@ -89,14 +89,14 @@ class __$$FolderContentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? notes = null,
+    Object? noteList = null,
     Object? folders = null,
   }) {
     return _then(_$FolderContentImpl(
-      notes: null == notes
-          ? _value._notes
-          : notes // ignore: cast_nullable_to_non_nullable
-              as List<Note>,
+      noteList: null == noteList
+          ? _value._noteList
+          : noteList // ignore: cast_nullable_to_non_nullable
+              as List<NoteList>,
       folders: null == folders
           ? _value._folders
           : folders // ignore: cast_nullable_to_non_nullable
@@ -109,20 +109,20 @@ class __$$FolderContentImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$FolderContentImpl implements _FolderContent {
   const _$FolderContentImpl(
-      {required final List<Note> notes,
+      {required final List<NoteList> noteList,
       required final List<FolderIdAndTitle> folders})
-      : _notes = notes,
+      : _noteList = noteList,
         _folders = folders;
 
   factory _$FolderContentImpl.fromJson(Map<String, dynamic> json) =>
       _$$FolderContentImplFromJson(json);
 
-  final List<Note> _notes;
+  final List<NoteList> _noteList;
   @override
-  List<Note> get notes {
-    if (_notes is EqualUnmodifiableListView) return _notes;
+  List<NoteList> get noteList {
+    if (_noteList is EqualUnmodifiableListView) return _noteList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_notes);
+    return EqualUnmodifiableListView(_noteList);
   }
 
   final List<FolderIdAndTitle> _folders;
@@ -135,7 +135,7 @@ class _$FolderContentImpl implements _FolderContent {
 
   @override
   String toString() {
-    return 'FolderContent(notes: $notes, folders: $folders)';
+    return 'FolderContent(noteList: $noteList, folders: $folders)';
   }
 
   @override
@@ -143,7 +143,7 @@ class _$FolderContentImpl implements _FolderContent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FolderContentImpl &&
-            const DeepCollectionEquality().equals(other._notes, _notes) &&
+            const DeepCollectionEquality().equals(other._noteList, _noteList) &&
             const DeepCollectionEquality().equals(other._folders, _folders));
   }
 
@@ -151,7 +151,7 @@ class _$FolderContentImpl implements _FolderContent {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_notes),
+      const DeepCollectionEquality().hash(_noteList),
       const DeepCollectionEquality().hash(_folders));
 
   @JsonKey(ignore: true)
@@ -170,14 +170,14 @@ class _$FolderContentImpl implements _FolderContent {
 
 abstract class _FolderContent implements FolderContent {
   const factory _FolderContent(
-      {required final List<Note> notes,
+      {required final List<NoteList> noteList,
       required final List<FolderIdAndTitle> folders}) = _$FolderContentImpl;
 
   factory _FolderContent.fromJson(Map<String, dynamic> json) =
       _$FolderContentImpl.fromJson;
 
   @override
-  List<Note> get notes;
+  List<NoteList> get noteList;
   @override
   List<FolderIdAndTitle> get folders;
   @override

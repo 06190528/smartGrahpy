@@ -8,9 +8,7 @@ part of 'note.dart';
 
 _$NoteImpl _$$NoteImplFromJson(Map<String, dynamic> json) => _$NoteImpl(
       title: json['title'] as String,
-      parentFolderId: json['parentFolderId'] as String,
-      content: json['content'] as String,
-      folderId: json['folderId'] as String,
+      note: json['note'] as String,
       drawStile: $enumDecode(_$DrawStileEnumMap, json['drawStile']),
       latLngs: (json['latLngs'] as List<dynamic>)
           .map((e) =>
@@ -23,9 +21,7 @@ _$NoteImpl _$$NoteImplFromJson(Map<String, dynamic> json) => _$NoteImpl(
 Map<String, dynamic> _$$NoteImplToJson(_$NoteImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'parentFolderId': instance.parentFolderId,
-      'content': instance.content,
-      'folderId': instance.folderId,
+      'note': instance.note,
       'drawStile': _$DrawStileEnumMap[instance.drawStile]!,
       'latLngs': instance.latLngs.map(const LatLngConverter().toJson).toList(),
       'imageOrDefault': _$ImageOrDefaultEnumMap[instance.imageOrDefault]!,
@@ -43,3 +39,19 @@ const _$ImageOrDefaultEnumMap = {
   ImageOrDefault.image: 'image',
   ImageOrDefault.flutterDefault: 'flutterDefault',
 };
+
+_$NoteListImpl _$$NoteListImplFromJson(Map<String, dynamic> json) =>
+    _$NoteListImpl(
+      notes: (json['notes'] as List<dynamic>)
+          .map((e) => Note.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      folderId: json['folderId'] as String,
+      index: (json['index'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$NoteListImplToJson(_$NoteListImpl instance) =>
+    <String, dynamic>{
+      'notes': instance.notes,
+      'folderId': instance.folderId,
+      'index': instance.index,
+    };

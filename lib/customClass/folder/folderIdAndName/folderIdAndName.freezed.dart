@@ -22,6 +22,7 @@ FolderIdAndTitle _$FolderIdAndTitleFromJson(Map<String, dynamic> json) {
 mixin _$FolderIdAndTitle {
   String get title => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
+  int get index => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $FolderIdAndTitleCopyWith<$Res> {
           FolderIdAndTitle value, $Res Function(FolderIdAndTitle) then) =
       _$FolderIdAndTitleCopyWithImpl<$Res, FolderIdAndTitle>;
   @useResult
-  $Res call({String title, String id});
+  $Res call({String title, String id, int index});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$FolderIdAndTitleCopyWithImpl<$Res, $Val extends FolderIdAndTitle>
   $Res call({
     Object? title = null,
     Object? id = null,
+    Object? index = null,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -63,6 +65,10 @@ class _$FolderIdAndTitleCopyWithImpl<$Res, $Val extends FolderIdAndTitle>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -75,7 +81,7 @@ abstract class _$$FolderIdAndTitleImplCopyWith<$Res>
       __$$FolderIdAndTitleImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String id});
+  $Res call({String title, String id, int index});
 }
 
 /// @nodoc
@@ -91,6 +97,7 @@ class __$$FolderIdAndTitleImplCopyWithImpl<$Res>
   $Res call({
     Object? title = null,
     Object? id = null,
+    Object? index = null,
   }) {
     return _then(_$FolderIdAndTitleImpl(
       title: null == title
@@ -101,6 +108,10 @@ class __$$FolderIdAndTitleImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -108,7 +119,8 @@ class __$$FolderIdAndTitleImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$FolderIdAndTitleImpl implements _FolderIdAndTitle {
-  const _$FolderIdAndTitleImpl({required this.title, required this.id});
+  const _$FolderIdAndTitleImpl(
+      {required this.title, required this.id, required this.index});
 
   factory _$FolderIdAndTitleImpl.fromJson(Map<String, dynamic> json) =>
       _$$FolderIdAndTitleImplFromJson(json);
@@ -117,10 +129,12 @@ class _$FolderIdAndTitleImpl implements _FolderIdAndTitle {
   final String title;
   @override
   final String id;
+  @override
+  final int index;
 
   @override
   String toString() {
-    return 'FolderIdAndTitle(title: $title, id: $id)';
+    return 'FolderIdAndTitle(title: $title, id: $id, index: $index)';
   }
 
   @override
@@ -129,12 +143,13 @@ class _$FolderIdAndTitleImpl implements _FolderIdAndTitle {
         (other.runtimeType == runtimeType &&
             other is _$FolderIdAndTitleImpl &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.index, index) || other.index == index));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, id);
+  int get hashCode => Object.hash(runtimeType, title, id, index);
 
   @JsonKey(ignore: true)
   @override
@@ -154,7 +169,8 @@ class _$FolderIdAndTitleImpl implements _FolderIdAndTitle {
 abstract class _FolderIdAndTitle implements FolderIdAndTitle {
   const factory _FolderIdAndTitle(
       {required final String title,
-      required final String id}) = _$FolderIdAndTitleImpl;
+      required final String id,
+      required final int index}) = _$FolderIdAndTitleImpl;
 
   factory _FolderIdAndTitle.fromJson(Map<String, dynamic> json) =
       _$FolderIdAndTitleImpl.fromJson;
@@ -163,6 +179,8 @@ abstract class _FolderIdAndTitle implements FolderIdAndTitle {
   String get title;
   @override
   String get id;
+  @override
+  int get index;
   @override
   @JsonKey(ignore: true)
   _$$FolderIdAndTitleImplCopyWith<_$FolderIdAndTitleImpl> get copyWith =>

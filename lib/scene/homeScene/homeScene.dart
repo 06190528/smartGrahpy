@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:smart_graph_app/customClass/screenSize.dart';
 import 'package:smart_graph_app/scene/homeScene/homeSceneController.dart';
-import 'package:smart_graph_app/scene/homeScene/homeSceneWIdgets.dart';
 
 class HomeScene extends ConsumerStatefulWidget {
   @override
@@ -15,8 +14,11 @@ class _HomeSceneState extends ConsumerState<HomeScene> {
 
   @override
   Widget build(BuildContext context) {
-    final homeSceneController = ref.watch(homeSceneControllerProvider);
+    final _homeSceneController = ref.read(homeSceneControllerProvider);
+    if (_homeSceneController.homeSceneWidgets == null)
+      _homeSceneController.setHomeSceneWidgets(ScreenSize.width, setState);
     final width = ScreenSize.width;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -26,17 +28,17 @@ class _HomeSceneState extends ConsumerState<HomeScene> {
               zoom: 8,
             ),
             mapType: MapType.terrain,
-            polygons: homeSceneController.mapShape.polygons,
-            polylines: homeSceneController.mapShape.polylines,
-            markers: homeSceneController.mapShape.nowSetMarkers,
+            polygons: _homeSceneController.mapShape.polygons,
+            polylines: _homeSceneController.mapShape.polylines,
+            markers: _homeSceneController.mapShape.nowSetMarkers,
             onMapCreated: (controller) {
-              homeSceneController.setMapController(controller);
+              _homeSceneController.setMapController(controller);
             },
             myLocationButtonEnabled: false,
             compassEnabled: false,
             rotateGesturesEnabled: false,
             onTap: (latLng) {
-              homeSceneController.onTapAndSetNowSetMarkers(latLng, setState);
+              _homeSceneController.onTapAndSetNowSetMarkers(latLng, setState);
             },
           ),
           Positioned(
@@ -44,17 +46,17 @@ class _HomeSceneState extends ConsumerState<HomeScene> {
             left: 10,
             child: SizedBox(
               width: width * 0.5,
-              child: HomeSceneWidgets.searchField(
+              child: _homeSceneController.homeSceneWidgets!.searchField(
                 ref,
                 setState,
               ),
             ),
           ),
-          homeSceneController.commonMenuWidget.leftSlideMenu(
+          _homeSceneController.commonMenuWidget.leftSlideMenu(
               context,
               setState,
-              HomeSceneWidgets.noteMenu(ScreenSize.width * 0.2),
-              ScreenSize.width * 0.2),
+              _homeSceneController.homeSceneWidgets!.noteModeMenu(),
+              width * 0.2),
         ],
       ),
     );

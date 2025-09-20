@@ -11,6 +11,7 @@ _$FolderIdAndTitleImpl _$$FolderIdAndTitleImplFromJson(
     _$FolderIdAndTitleImpl(
       title: json['title'] as String,
       id: json['id'] as String,
+      index: (json['index'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$FolderIdAndTitleImplToJson(
@@ -18,4 +19,5 @@ Map<String, dynamic> _$$FolderIdAndTitleImplToJson(
     <String, dynamic>{
       'title': instance.title,
       'id': instance.id,
+      'index': instance.index,
     };
